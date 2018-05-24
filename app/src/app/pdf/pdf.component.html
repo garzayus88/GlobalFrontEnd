@@ -1,0 +1,222 @@
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<p style="text-align: center;"><strong>VALORACION DE SEGUIMIENTO POR ENFERMERIA</strong></p>
+<table style="width: 100%;">
+  <tbody>
+    <tr>
+      <td colspan="2">Paciente:</td>
+      <td colspan="6">{{data.nom_Pac + " " + data.ape_Pac}}</td>
+    </tr>
+    <tr>
+      <td><strong>CC</strong></td>
+      <td>{{data.iden_Pac}}</td>
+      <td><strong>Fecha Nac:</strong></td>
+      <td>{{data.fnaci_pas}}</td>
+      <td><strong>Sexo:</strong></td>
+      <td>{{data.nom_sex}}</td>
+      <td><strong>Estado Civil:</strong></td>
+      <td>{{data.descrip_estado}}</td>
+    </tr>
+    <tr>
+      <td><strong>EPS:</strong></td>
+      <td>{{data.nom_eps}}</td>
+      <td><strong>Ciudad:</strong></td>
+      <td>{{data.ciudad}}</td>
+      <td><strong>Direcci&oacute;n:</strong></td>
+      <td>{{data.direc_pas}}</td>
+      <td><strong>Tel&eacute;fono:</strong></td>
+      <td>{{data.tel_pac}}</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<table style="width: 100%;">
+  <tbody>
+    <tr>
+      <td colspan="7">&nbsp;<strong>FECHA VALORACION</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; background-color: #b8cce4;" colspan="7">MEDICAMENTOS (Tarjeta de administracion de medicamentos)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="5"><strong>Medicamento</strong></td>
+      <td style="text-align: center;"><strong>Dosis</strong></td>
+      <td style="text-align: center;"><strong>Horario</strong></td>
+    </tr>
+    <tr *ngFor="let item of medicamentos" >
+      <td colspan="5">{{item.nom_prod}}</td>
+      <td style="text-align: center;">{{item.dosis}}</td>
+      <td style="text-align: center;">{{item.hora}}</td>
+    </tr>
+    <tr>
+      <td colspan="5">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="7">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="7">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; background-color: #b8cce4;" colspan="7"><strong>&nbsp;VALORACION DE LA PIEL</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: right;">Piel Integra</td>
+      <td style="text-align: center;">SI</td>
+      <td style="text-align: center;">{{getPielIntegraSi()}}</td>
+      <td style="text-align: center;">NO</td>
+      <td style="text-align: center;">{{getPielIntegraNo()}}</td>
+      <td>En caso de tener respuesta negativa especifique el numero de lesiones</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="7">{{valoracion.observacion_Piel}}</td>
+    </tr>
+    <tr>
+      <td colspan="7">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; background-color: #b8cce4;" colspan="7"><strong>ESCALA BRADEN - RIESGO DE ULCERA POR PRESION</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="2">Puntos</td>
+      <td style="text-align: center;" colspan="5">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="2">Percepci&oacute;n sensorial</td>
+      <td style="text-align: center;" colspan="5">{{getPercepcion()}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="2">Exposici&oacute;n a la humedad</td>
+      <td style="text-align: center;" colspan="5">{{getExposicionHumedad()}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="2">Actividad</td>
+      <td style="text-align: center;" colspan="5">{{getActividad()}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="2">Movilidad</td>
+      <td style="text-align: center;" colspan="5">{{getMovilidad()}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="2">Nutrici&oacute;n</td>
+      <td style="text-align: center;" colspan="5">{{getNutricion()}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="2">Fricci&oacute;n y cizallamiento</td>
+      <td style="text-align: center;" colspan="5">{{getFriccion()}}</td>
+    </tr>
+    <tr>
+      <td colspan="7">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Alto Riesgo</td>
+      <td colspan="2" style="text-align: center;">menor o igual a 12</td>
+      <td style="text-align: center;">Puntaje Total</td>
+      <td colspan="3">Observaciones:&nbsp;{{valoracion.observaciones_Braden}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Riesgo Moderado</td>
+      <td colspan="2" style="text-align: center;">13 - 14</td>
+      <td style="text-align: center;" rowspan="3">{{valoracion.puntajeTotal_Braden}}</td>
+      <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Bajo Riesgo</td>
+      <td colspan="2" style="text-align: center;">15 - 16</td>
+      <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Sin Riesgo</td>
+      <td colspan="2" style="text-align: center;">mayor a 16</td>
+      <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; background-color: #b8cce4;" colspan="7"><strong>Valoraci&oacute;n de ingreso y permanencia en el programa de Atenci&oacute;n Domiciliaria (&Iacute;ndice de Barthel Modificado)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="4">&nbsp;</td>
+      <td style="text-align: center;">Grado de Dependencia</td>
+      <td style="text-align: center;">Resultado</td>
+      <td style="text-align: center;">Puntaje Obtenido</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Ba&ntilde;arse</td>
+      <td style="text-align: center;" colspan="3">{{getValoracionGeneral(valoracion.banarse)}}</td>
+      <td style="text-align: center;">Grave</td>
+      <td style="text-align: center;">&lt; 40</td>
+      <td style="text-align: center;" rowspan="4">{{valoracion.total_puntaje_val}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Lavarse los dientes</td>
+      <td style="text-align: center;" colspan="3">&nbsp;</td>
+      <td style="text-align: center;">Moderado</td>
+      <td style="text-align: center;">41 - 55</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Comer</td>
+      <td style="text-align: center;" colspan="3">{{getValoracionGeneral(valoracion.comer)}}</td>
+      <td style="text-align: center;">Leve</td>
+      <td style="text-align: center;">56 - 99</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Usar el Retrete</td>
+      <td style="text-align: center;" colspan="3">{{getValoracionGeneral2(valoracion.usar_retrete)}}</td>
+      <td style="text-align: center;">Independiente</td>
+      <td style="text-align: center;">100</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Subir Escaleras</td>
+      <td style="text-align: center;" colspan="3">{{getValoracionGeneral2(valoracion.subir_escalera)}}</td>
+      <td style="text-align: center;" colspan="3"><strong>Observaciones:</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Vestirse</td>
+      <td style="text-align: center;" colspan="3">{{getValoracionGeneral2(valoracion.vestirse)}}</td>
+      <td style="text-align: center;" colspan="3">{{valoracion.Observaciones_val}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Control de la deposici&oacute;n</td>
+      <td style="text-align: center;" colspan="3">{{getValoracionGeneral2(valoracion.ctrl_deposicion)}}</td>
+      <td style="text-align: center;" colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Control de la micci&oacute;n</td>
+      <td style="text-align: center;" colspan="3">{{getValoracionGeneral2(valoracion.ctrl_miccion)}}</td>
+      <td style="text-align: center;" colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Caminar</td>
+      <td style="text-align: center;" colspan="3">{{getValoracionGeneral3(valoracion.caminar)}}</td>
+      <td style="text-align: center;" colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">Traslado Silla Cama</td>
+      <td style="text-align: center;" colspan="3">{{getValoracionGeneral3(valoracion.traslado_silla_cama)}}</td>
+      <td style="text-align: center;" colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; background-color: #b8cce4;" colspan="7"><strong>PLAN DE CUIDADOS DE ENFERMERIA</strong><br /><strong> (Formule actividades para fortalecer los patrones alterados)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="7">{{valoracion.PlandeCuidados}}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; background-color: #b8cce4;" colspan="7"><strong>EDUCACION AL PACIENTE, CUIDADOR Y FAMILIA</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center;" colspan="7">{{valoracion.EducacionPaciente}}</td>
+    </tr>
+  </tbody>
+</table>
+<br />

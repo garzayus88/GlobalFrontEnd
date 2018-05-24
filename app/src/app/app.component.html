@@ -1,0 +1,50 @@
+<mat-toolbar color="primary" style="height: 120px" >    
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
+      <img class="mr-3" src="../assets/logo.jpg" alt="" width="150" height="100">
+      <div class="lh-100">        
+      </div>
+    </div>
+</mat-toolbar>
+
+<div class="container">
+  <br>  
+  <mat-accordion class="hidePrint">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Paciente:
+        </mat-panel-title>
+        <mat-panel-description>
+          {{nombrePaciente}} - {{edad}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <table class="table table-striped table-sm">
+        <thead>
+            <tr>              
+              <th >{{nom_tipdoc}}</th>         
+              <td >{{cedulaPac}}</td>
+              <th>Fecha Nac:</th>
+              <td>{{fechaNac}}</td>
+              <th>Sexo:</th>                    
+              <td>{{sexo}}</td>
+              <th>Estado Civil:</th>
+              <td>{{descrip_estado}}</td>
+            </tr>
+            <tr>
+                <th>EPS:</th>
+                <td>{{eps}}</td> 
+                <th>Ciudad:</th>
+                <td >{{ciudad}}</td>
+                <th>Direccion:</th>
+                <td >{{direccion}}</td>
+                <th>Telefono:</th>              
+                <td>{{telefono}}</td>
+              </tr>
+          </thead>                     
+    </table>
+    </mat-expansion-panel>    
+  </mat-accordion>
+  <br>
+  <router-outlet></router-outlet>
+</div>

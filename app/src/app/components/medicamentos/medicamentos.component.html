@@ -1,0 +1,346 @@
+<!--<div class="row">Usuario: {{currentUser.nom_usu || ''}} - {{currentUser.nom_rol || ''}}</div>-->
+
+<mat-tab-group>
+      
+<mat-tab label="Escala Braden">
+  <br>
+    <div class={{ThemeBraden}} role="alert">
+        {{MsgBradenTheme}}
+      </div>
+  <div class="form-group">
+          
+
+          <div class="example-container">
+
+              <div>
+                  Piel Integral
+                  <mat-slide-toggle [disabled] = "consulta" [(ngModel)]="valoracion.pielIntegra" class="flex-sm-row-reverse"></mat-slide-toggle>            
+                  <br>
+                </div>
+                
+              <mat-form-field>
+                  <input [disabled] = "consulta" matInput [(ngModel)]="valoracion.observacion_Piel" placeholder="Observacion Piel">
+                </mat-form-field>
+
+
+            <mat-form-field >
+              <mat-select [disabled] = "consulta" [(value)]="valoracion.percepcion_sensorial" (change)="onSelectChange($event)" placeholder="Percepcion Sensorial">                
+                <mat-option [value]="1">Completamente Limitado</mat-option>
+                <mat-option [value]="2">Muy limitado</mat-option>
+                <mat-option [value]="3">Levemente Limitado</mat-option>
+                <mat-option [value]="4">Ninguna Limitacion</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+       
+        
+        
+          <div class="example-container">
+            <mat-form-field >
+              <mat-select [disabled] = "consulta" [(value)]="valoracion.exposicion_humedad" (change)="onSelectChange($event)" placeholder="Exposicion a la humedad">                
+                <mat-option [value]="1">Excesivamente Humeda</mat-option>
+                <mat-option [value]="2">Muy humeda</mat-option>
+                <mat-option [value]="3">Ocasionalmente humedo</mat-option>
+                <mat-option [value]="4">Raramente humedo</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="example-container" >
+              <mat-form-field >
+                <mat-select [disabled] = "consulta" [(value)]="valoracion.actividad" (change)="onSelectChange($event)" placeholder="Actividad">                  
+                  <mat-option [value]="1">Completamente Inmovil</mat-option>
+                  <mat-option [value]="2">Confinado a silla</mat-option>
+                  <mat-option [value]="3">camina Ocasionalmene</mat-option>
+                  <mat-option [value]="4">camina Frecuentemente</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field >
+                  <mat-select [disabled] = "consulta" [(value)]="valoracion.movilidad" (change)="onSelectChange($event)" placeholder="Movilidad">                    
+                    <mat-option [value]="1">Completamente Inmovil</mat-option>
+                    <mat-option [value]="2">Muy Limitado</mat-option>
+                    <mat-option [value]="3">Levemente limitado</mat-option>
+                    <mat-option [value]="4">Ninguna Limitacion</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field >
+                  <mat-select [disabled] = "consulta" [(value)]="valoracion.nutricion" (change)="onSelectChange($event)" placeholder="Nutricion">                    
+                    <mat-option [value]="1">Deficiente</mat-option>
+                    <mat-option [value]="2">Inadecuada</mat-option>
+                    <mat-option [value]="3">Adecuada</mat-option>
+                    <mat-option [value]="4">Excelente</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field >
+                  <mat-select [disabled] = "consulta" [(value)]="valoracion.friccion_cizallamiento" (change)="onSelectChange($event)" placeholder="Friccion y Cizallamiento">                    
+                    <mat-option [value]="1">Requiere maximo cuidado</mat-option>
+                    <mat-option [value]="2">Requiere minimo cuidado</mat-option>
+                    <mat-option [value]="3">Sin problema aparente</mat-option>                    
+                  </mat-select>
+                </mat-form-field>              
+            </div>
+  </div>
+    
+  </mat-tab>
+
+  <mat-tab label="Indice Barthel">
+      <div class={{ThemeBarthel}} role="alert">
+          {{MsgBarthel}}
+        </div>
+    <div class="form-group">
+     
+      <div class="example-container" >
+        <mat-form-field >
+          <mat-select [disabled] = "consulta" [(value)]="valoracion.banarse" (change)="OnSelectChangeBartel($event)" placeholder="Banarse">
+            <mat-option [value]="0">Incapaz de hacerlo</mat-option>
+            <mat-option [value]="1">Intenta pero inseguro</mat-option>
+            <mat-option [value]="3">Alguna Ayuda</mat-option>
+            <mat-option [value]="4">Minima Ayuda</mat-option>
+            <mat-option [value]="5">Independiente</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+   
+    
+    
+      <div class="example-container">
+        <mat-form-field >
+          <mat-select [disabled] = "consulta" [(value)]="valoracion.comer" (change)="OnSelectChangeBartel($event)" placeholder="Comer">
+            <mat-option [value]="0">Incapaz de hacerlo</mat-option>
+            <mat-option [value]="2">Intenta pero inseguro</mat-option>
+            <mat-option [value]="5">Alguna Ayuda</mat-option>
+            <mat-option [value]="8">Minima Ayuda</mat-option>
+            <mat-option [value]="10">Independiente</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="example-container" >
+          <mat-form-field >
+            <mat-select [disabled] = "consulta" [(value)]="valoracion.usar_retrete" (change)="OnSelectChangeBartel($event)" placeholder="Uso del retrete">
+              <mat-option [value]="0">Incapaz de hacerlo</mat-option>
+              <mat-option [value]="2">Intenta pero inseguro</mat-option>
+              <mat-option [value]="5">Alguna Ayuda</mat-option>
+              <mat-option [value]="8">Minima Ayuda</mat-option>
+              <mat-option [value]="10">Independiente</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field >
+              <mat-select [disabled] = "consulta" [(value)]="valoracion.subir_escalera" (change)="OnSelectChangeBartel($event)" placeholder="Uso de escaleras">
+                <mat-option [value]="0">Incapaz de hacerlo</mat-option>
+                <mat-option [value]="2">Intenta pero inseguro</mat-option>
+                <mat-option [value]="5">Alguna Ayuda</mat-option>
+                <mat-option [value]="8">Minima Ayuda</mat-option>
+                <mat-option [value]="10">Independiente</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field >
+              <mat-select [disabled] = "consulta" [(value)]="valoracion.vestirse" (change)="OnSelectChangeBartel($event)" placeholder="Vestirse">
+                <mat-option [value]="0">Incapaz de hacerlo</mat-option>
+                <mat-option [value]="2">Intenta pero inseguro</mat-option>
+                <mat-option [value]="5">Alguna Ayuda</mat-option>
+                <mat-option [value]="8">Minima Ayuda</mat-option>
+                <mat-option [value]="10">Independiente</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field >
+              <mat-select [disabled] = "consulta" [(value)]="valoracion.ctrl_deposicion" (change)="OnSelectChangeBartel($event)" placeholder="Deposicion">
+                <mat-option [value]="0">Incapaz de hacerlo</mat-option>
+                <mat-option [value]="2">Intenta pero inseguro</mat-option>
+                <mat-option [value]="5">Alguna Ayuda</mat-option>
+                <mat-option [value]="8">Minima Ayuda</mat-option>
+                <mat-option [value]="10">Independiente</mat-option>                   
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field >
+              <mat-select [disabled] = "consulta" [(value)]="valoracion.ctrl_miccion" (change)="OnSelectChangeBartel($event)" placeholder="Miccion">
+                <mat-option [value]=0>Incapaz de hacerlo</mat-option>
+                <mat-option [value]=2>Intenta pero inseguro</mat-option>
+                <mat-option [value]=5>Alguna Ayuda</mat-option>
+                <mat-option [value]=8>Minima Ayuda</mat-option>
+                <mat-option [value]=10>Independiente</mat-option>                   
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field >
+              <mat-select [disabled] = "consulta" [(value)]="valoracion.caminar" (change)="OnSelectChangeBartel($event)" placeholder="Caminar">
+                <mat-option [value]="0">Incapaz de hacerlo</mat-option>
+                <mat-option [value]="2">Intenta pero inseguro</mat-option>
+                <mat-option [value]="10">Alguna Ayuda</mat-option>
+                <mat-option [value]="14">Minima Ayuda</mat-option>
+                <mat-option [value]="15">Independiente</mat-option>                   
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field >
+              <mat-select [disabled] = "consulta" [(value)]="valoracion.traslado_silla_cama" (change)="OnSelectChangeBartel($event)" placeholder="Traslado Silla Cama">
+                <mat-option [value]="0">Incapaz de hacerlo</mat-option>
+                <mat-option [value]="2">Intenta pero inseguro</mat-option>
+                <mat-option [value]="10">Alguna Ayuda</mat-option>
+                <mat-option [value]="14">Minima Ayuda</mat-option>
+                <mat-option [value]="15">Independiente</mat-option>                   
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea [disabled] = "consulta" matInput placeholder="Comentario" name="comentario_val" [(ngModel)] = "valoracion.Observaciones_val"></textarea>
+              </mat-form-field>
+
+
+            
+        </div>
+</div>
+
+
+  </mat-tab>
+
+  <mat-tab label="Extra">
+      <div class="example-container">
+        <mat-form-field>
+          <textarea [disabled] = "consulta" matInput placeholder="Plan de cuidados" matTextareaAutosize matAutosizeMinRows="1"
+          matAutosizeMaxRows="5" name="plan_cuidados" [(ngModel)] = "valoracion.PlandeCuidados"></textarea>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <textarea [disabled] = "consulta" matInput placeholder="Educacion al Paciente" matTextareaAutosize matAutosizeMinRows="1"
+            matAutosizeMaxRows="5" name="educacion_paciente" [(ngModel)] = "valoracion.EducacionPaciente"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea [disabled] = "consulta" matInput placeholder="Observacion Gral" matTextareaAutosize matAutosizeMinRows="1"
+            matAutosizeMaxRows="5" name="observacion_gral" [(ngModel)] = "valoracion.Observacion_gral"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+              <textarea [disabled] = "consulta" matInput placeholder="PDF" matTextareaAutosize matAutosizeMinRows="1"
+              matAutosizeMaxRows="5" name="rutaPDF" [(ngModel)] = "valoracion.ruta_PDF"></textarea>
+              <button (click)="getFile()">Download</button>
+          </mat-form-field>
+
+          <label for="singleFile">Upload file</label>
+          <!--<input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>-->
+          <input type="file"
+                   #fileInput>
+                   <!--<button  (click)="saveDocument()">Guardar</button>-->
+          <br>
+          <!--[httpUrl]="'http://localhost:4200/'">-->
+          <!--[httpUrl]="http://enfermeriaapi.globallifeambulancias.com/PDF/">-->
+          <mat-file-upload-queue #fileUploadQueue
+            [fileAlias]="'file'"            
+            [httpUrl]="'http://localhost:8180/jax-rs-jersey-application-sample'">           
+            <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+          </mat-file-upload-queue>
+          <!--
+          <label for="singleFile">Upload File</label>
+          <input type="file" name="fileUplad" id="fileUpload"
+           multiple ng2FileSelect [uploader]="uploader">
+          
+           <div class="row uploadList" *ngFor="let item of uploader.queue">
+              <div class="col-sm-4">{{item.file.name}}</div>
+              <div class="col-sm-4">
+                <div  class="progress">
+                  <div class="progress-bar bg success"
+                  [ngStyle]= "{'width':item.progress + '%'}">
+                  </div>                  
+                </div>
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-dark" (click)=item.upload()>Cargar</button>
+                  <button type="button" class="btn btn-danger" (click)=item.remove()>Cancelar</button>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="Uploader?.queue?.lenght > 0">
+             <button type="button" class="btn btn-primary" (click)="uploader.uploadAll()">Upload All</button>
+            </div>
+         -->
+      </div>
+  </mat-tab>
+
+  <mat-tab label="Medicamentos">  
+    <form (submit)="AddMedicamentoToHist()" >          
+    <br>
+
+    <div class="example-container">
+    
+    <mat-form-field>
+      <input [disabled] = "consulta" matInput [matAutocomplete]="auto" [formControl]="myControl" placeholder="Medicamento">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredMedicamentos | async" 
+          [value]="option.nom_prod" (onSelectionChange)="getMedicamentoFromAuto(option)">
+          <span>{{option.nom_prod}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+  <mat-form-field>
+  
+    <input [disabled] = "consulta" matInput type="text" placeholder="Dosificacion" name="dosis" [(ngModel)]="insumoPaciente.dosis" >
+    </mat-form-field>
+  
+
+
+    <mat-form-field>
+        <input [disabled] = "consulta" matInput  type="time" placeholder="Hora Dosificacion" [(ngModel)] = "insumoPaciente.hora" name="hora">
+      </mat-form-field>
+
+    </div>
+
+
+  <button [disabled] = "consulta" class="btn btn-primary" type="submit" value="Guardar" >Agregar a lista</button>
+
+
+
+
+</form>
+<div>                   
+
+      <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th >Producto</th>
+              <th scope="col">Dosis</th>
+              <th scope="col">Hora</th>
+              <th scope="col"></th>                    
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let hist of historial | async"> 
+              <td>{{hist.medicamento.nom_prod}}</td>
+              <td>{{hist.dosis}}</td>
+              <td>{{hist.hora}}</td>
+              <td>
+                <button mat-icon-button color="warn" (click) = "DeleteMedicPaciente(hist.id_MedxSeg)">
+                  <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                </button>
+              </td>              
+            </tr>
+            
+          </tbody>
+        </table>
+    
+</div>  
+<br />
+</mat-tab>
+  
+</mat-tab-group>
+
+<div class="row">
+  <div class="col">
+    <button [disabled] = "consulta" type="button" class="btn btn-primary btn-block " (click)="SaveValoracion()">Guardar</button>  
+  </div>
+  
+  <div class="col">
+    <button type="button" class="btn btn-warning btn-block " (click)="Cancelar()">Terminar Visita</button>
+  </div>
+  
+</div>
+
+
+
