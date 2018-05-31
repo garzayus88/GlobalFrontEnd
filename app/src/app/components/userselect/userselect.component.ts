@@ -93,6 +93,7 @@ export class UserselectComponent implements OnInit {
   }
 
   openPdf(visita: ValoracionEnfermeria){
-    window.open("/pdf/" + visita.iden_pac + "/" + visita.Id_ValSegEnf, "_blank");
+    //window.open("/pdf/" + visita.iden_pac + "/" + visita.Id_ValSegEnf, "_blank");
+    this.router.navigate(['/pdf',visita.iden_pac,visita.Id_ValSegEnf]);
   }
 }

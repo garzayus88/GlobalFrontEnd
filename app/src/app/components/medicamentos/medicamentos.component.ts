@@ -44,7 +44,6 @@ export class MedicamentosComponent implements OnInit {
     nom_rol: string
   }
   domain ="http://localhost:3000";
-  //domain ="http://enfermeriaapi.globallifeambulancias.com";
   nombrePaciente = "";
   subscription: Subscription;
   idVisita: string;
