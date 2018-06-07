@@ -15,6 +15,7 @@ module.exports = function(sequelize, DataTypes){
       observaciones_Braden: { type: DataTypes.STRING, allowNull: true},
       banarse: { type: DataTypes.INTEGER, allowNull: true},
       comer: { type: DataTypes.INTEGER, allowNull: true},
+      lavar_dientes: { type: DataTypes.INTEGER, allowNull: true},
       usar_retrete: { type: DataTypes.INTEGER, allowNull: true},
       subir_escalera: { type: DataTypes.INTEGER, allowNull: true},
       vestirse: { type: DataTypes.INTEGER, allowNull: true},
