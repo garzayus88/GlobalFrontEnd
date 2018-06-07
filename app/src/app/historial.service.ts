@@ -11,8 +11,8 @@ import { ValoracionEnfermeria } from './models/valoracion';
 
 @Injectable()
 export class HistorialService {
-domain ="http://enfermeriaapi.globallifeambulancias.com";
-//domain ="http://localhost:3000";
+//domain ="http://enfermeriaapi.globallifeambulancias.com";
+domain ="http://localhost:3000";
   constructor(private http: Http) { }
 
   getMedicamentos(): Observable<Medicamento[]>{

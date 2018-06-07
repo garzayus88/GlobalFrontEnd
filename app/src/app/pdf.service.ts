@@ -7,8 +7,8 @@ import { PdfValoracion } from "./models/pdfvaloracion";
 
 @Injectable()
 export class PdfService {
-domain ="http://enfermeriaapi.globallifeambulancias.com";
-//domain ="http://localhost:3000";
+//domain ="http://enfermeriaapi.globallifeambulancias.com";
+domain ="http://localhost:3000";
   constructor(private http: Http) { }
 
   getData(value): Observable<PdfPaciente>{

@@ -80,7 +80,11 @@
                     <mat-option [value]="2">Requiere minimo cuidado</mat-option>
                     <mat-option [value]="3">Sin problema aparente</mat-option>                    
                   </mat-select>
-                </mat-form-field>              
+                </mat-form-field>
+                
+                <mat-form-field>
+                  <textarea [disabled] = "consulta" matInput placeholder="Observaciones" name="observaciones_Braden" [(ngModel)] = "valoracion.observaciones_Braden"></textarea>
+                </mat-form-field>
             </div>
   </div>
     
@@ -104,7 +108,17 @@
         </mat-form-field>
       </div>
    
-    
+      <div class="example-container" >
+        <mat-form-field >
+          <mat-select [disabled] = "consulta" [(value)]="valoracion.lavar_dientes" (change)="OnSelectChangeBartel($event)" placeholder="Lavarse los dientes">
+            <mat-option [value]="0">Incapaz de hacerlo</mat-option>
+            <mat-option [value]="1">Intenta pero inseguro</mat-option>
+            <mat-option [value]="3">Alguna Ayuda</mat-option>
+            <mat-option [value]="4">Minima Ayuda</mat-option>
+            <mat-option [value]="5">Independiente</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     
       <div class="example-container">
         <mat-form-field >
