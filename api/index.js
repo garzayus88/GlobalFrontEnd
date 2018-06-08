@@ -8,7 +8,7 @@ var seguimiento = require('./routes/seguimiento_medicamento');
 var braden = require('./routes/braden');
 var paciente = require('./routes/paciente');
 var pdf = require('./routes/pdf');
-//var file = require('./routes/File');
+const catalogRouter = require('./routes/catalog');
 var cors = require('cors');
 var multer = require('multer');
 const app = express();
@@ -24,6 +24,7 @@ app.use('/seguimiento', seguimiento);
 app.use('/valoracion', braden);
 app.use('/pacientes', paciente);
 app.use('/pdf', pdf);
+app.use('/api/catalog/',catalogRouter);
 //app.use('/file', file);
 app.get('/', (req, res) => res.send('Hello World!'));
 

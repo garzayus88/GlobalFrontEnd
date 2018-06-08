@@ -24,6 +24,7 @@ db.medicamento = db.sequelize.import('./medicamentos');
 db.seguimiento = db.sequelize.import('./seguimiento');
 db.braden = db.sequelize.import('./braden');
 db.paciente = db.sequelize.import('./paciente');
+db.nutricion = db.sequelize.import('nutricion/valoracionnutricional');
 //relations
 db.seguimiento.belongsTo(db.medicamento, {foreignKey: 'id_prod'});
 module.exports = db;
