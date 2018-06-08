@@ -13,6 +13,7 @@ export interface ValoracionEnfermeria{
     observaciones_Braden?: string,
     banarse?: number,
     comer?: number,
+    lavar_dientes?: number,
     usar_retrete?: number,
     subir_escalera?: number,
     vestirse?: number,

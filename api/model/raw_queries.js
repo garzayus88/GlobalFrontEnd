@@ -38,7 +38,7 @@ exports.getPdfMedicamentos = function(req, res){
 
 exports.getPdfValoracion = function(req, res){
     debugger;
-    seq.query('SELECT Observaciones_val, CAST(pielIntegra AS unsigned) as pielIntegra,observacion_Piel ,percepcion_sensorial ,exposicion_humedad ,actividad ,movilidad ,nutricion ,friccion_cizallamiento ,puntajeTotal_Braden ,observaciones_Braden ,total_puntaje_val ,banarse ,comer ,usar_retrete ,subir_escalera ,vestirse ,ctrl_deposicion ,ctrl_miccion ,caminar ,traslado_silla_cama ,PlandeCuidados ,EducacionPaciente FROM `valoracion_seg_enfermeria` WHERE Id_ValSegEnf = \'' + req.params.Id_ValSegEnf + '\' LIMIT 1'
+    seq.query('SELECT Observaciones_val, CAST(pielIntegra AS unsigned) as pielIntegra,observacion_Piel ,percepcion_sensorial ,exposicion_humedad ,actividad ,movilidad ,nutricion ,friccion_cizallamiento ,puntajeTotal_Braden ,observaciones_Braden ,total_puntaje_val ,banarse ,lavar_dientes ,comer ,usar_retrete ,subir_escalera ,vestirse ,ctrl_deposicion ,ctrl_miccion ,caminar ,traslado_silla_cama ,PlandeCuidados ,EducacionPaciente FROM `valoracion_seg_enfermeria` WHERE Id_ValSegEnf = \'' + req.params.Id_ValSegEnf + '\' LIMIT 1'
              ).spread(function(results, metadata) {
                 res.send(JSON.stringify(results[0]));
              });

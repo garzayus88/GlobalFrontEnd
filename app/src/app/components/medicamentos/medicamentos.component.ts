@@ -22,8 +22,8 @@ import {MatSnackBar} from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 import {FileSelectDirective,FileUploader} from 'ng2-file-upload';
 
-//const uri = 'http://localhost:3000/File/upload';
-const uri = 'http://enfermeriaapi.globallifeambulancias.com/File/upload';
+const uri = 'http://localhost:3000/File/upload';
+//const uri = 'http://enfermeriaapi.globallifeambulancias.com/File/upload';
 @Component({
   selector: 'app-medicamentos',
   templateUrl: './medicamentos.component.html',
@@ -227,6 +227,7 @@ export class MedicamentosComponent implements OnInit {
     OnSelectChangeBartel(event: MatSelectChange){
       
        this.totalBarthel = Number(this.valoracion.banarse) +
+                                         Number(this.valoracion.lavar_dientes) +
                                          Number(this.valoracion.comer) +
                                          Number(this.valoracion.usar_retrete) +
                                          Number(this.valoracion.subir_escalera) +
