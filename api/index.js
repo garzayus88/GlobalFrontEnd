@@ -24,7 +24,7 @@ app.use('/seguimiento', seguimiento);
 app.use('/valoracion', braden);
 app.use('/pacientes', paciente);
 app.use('/pdf', pdf);
-app.use('/api/catalog/',catalogRouter);
+app.use('/api/catalog',catalogRouter);
 //app.use('/file', file);
 app.get('/', (req, res) => res.send('Hello World!'));
 
