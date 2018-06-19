@@ -1,5 +1,5 @@
-export interface PdfMedicamento{    
-    nom_prod: string,
-    dosis: string,
-    hora: string,
-}   
+export interface PdfMedicamento {
+    nom_prod: string;
+    dosis: string;
+    hora: string;
+}

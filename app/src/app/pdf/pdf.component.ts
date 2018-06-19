@@ -12,205 +12,205 @@ import { ActivatedRoute, Params } from '@angular/router';
     selector: 'app-pdf',
     templateUrl: './pdf.component.html',
 })
-export class PdfComponent implements OnInit{
+export class PdfComponent implements OnInit {
 
-    data: PdfPaciente = {} as any; 
+    data: PdfPaciente = {} as any;
     medicamentos: PdfMedicamento[];
-    valoracion: PdfValoracion = {} as any; 
+    valoracion: PdfValoracion = {} as any;
     visita: ValoracionEnfermeria = {} as any;
     print: number;
 
     constructor(private pdfService: PdfService,
         private dataService: EmitterService,
-        private activatedRoute: ActivatedRoute){
+        private activatedRoute: ActivatedRoute) {
 
             this.print = 0;
     }
 
-    ngOnInit(){
-        this.activatedRoute.params.subscribe((params: Params) =>{
+    ngOnInit() {
+        this.activatedRoute.params.subscribe((params: Params) => {
             this.getData(params['id_pac']);
             this.getMedicamentos(params['id_visita']);
             this.getValoracion(params['id_visita']);
         });
     }
 
-    openPrint(){
-        if(this.print == 3){
+    openPrint() {
+        if (this.print === 3) {
             window.print();
         }
     }
 
-    getData(value){
-        this.pdfService.getData(value).subscribe(data =>{
+    getData(value) {
+        this.pdfService.getData(value).subscribe(data => {
             this.data = data;
             this.print++;
             this.openPrint();
         });
     }
 
-    getValoracion(value){
-        this.pdfService.getValoracion(value).subscribe(data =>{
+    getValoracion(value) {
+        this.pdfService.getValoracion(value).subscribe(data => {
             this.valoracion = data;
             this.print++;
             this.openPrint();
         });
     }
 
-    getMedicamentos(value){
-        this.pdfService.getMedicamentos(value).subscribe(data =>{
+    getMedicamentos(value) {
+        this.pdfService.getMedicamentos(value).subscribe(data => {
             this.medicamentos = data;
             this.print++;
             this.openPrint();
         });
     }
 
-    getPielIntegraSi(){
-        if(this.valoracion.pielIntegra == "1"){ return "X"; }
-        return "";
+    getPielIntegraSi() {
+        if (this.valoracion.pielIntegra === '1') { return 'X'; }
+        return '';
     }
 
-    getPielIntegraNo(){
-        if(this.valoracion.pielIntegra == "0"){ return "X"; }
-        return "";
+    getPielIntegraNo() {
+        if (this.valoracion.pielIntegra === '0') { return 'X'; }
+        return '';
     }
 
-    getPercepcion(){
-        switch(this.valoracion.percepcion_sensorial){
+    getPercepcion() {
+        switch (this.valoracion.percepcion_sensorial) {
             case 1:
-                return "Completamente ilimitado";
+                return 'Completamente ilimitado';
             case 2:
-                return "Muy Limitado";
+                return 'Muy Limitado';
             case 3:
-                return "Levemente Limitado";
+                return 'Levemente Limitado';
             case 4:
-                return "Ninguna Limitacion";
+                return 'Ninguna Limitacion';
         }
 
-        return "";
+        return '';
     }
 
-    getExposicionHumedad(){
-        switch(this.valoracion.exposicion_humedad){
+    getExposicionHumedad() {
+        switch (this.valoracion.exposicion_humedad) {
             case 1:
-                return "Excesivamente húmeda";
+                return 'Excesivamente húmeda';
             case 2:
-                return "Muy húmeda";
+                return 'Muy húmeda';
             case 3:
-                return "Ocasionalmente húmeda";
+                return 'Ocasionalmente húmeda';
             case 4:
-                return "Raramente húmeda";
+                return 'Raramente húmeda';
         }
 
-        return "";
+        return '';
     }
 
-    getActividad(){
-        switch(this.valoracion.actividad){
+    getActividad() {
+        switch (this.valoracion.actividad) {
             case 1:
-                return "Completamente inmóvil";
+                return 'Completamente inmóvil';
             case 2:
-                return "Confinado a silla";
+                return 'Confinado a silla';
             case 3:
-                return "Camina ocasionalmente";
+                return 'Camina ocasionalmente';
             case 4:
-                return "Camina frecuentemente";
+                return 'Camina frecuentemente';
         }
 
-        return "";
+        return '';
     }
 
-    getMovilidad(){
-        switch(this.valoracion.movilidad){
+    getMovilidad() {
+        switch (this.valoracion.movilidad) {
             case 1:
-                return "Completamente inmóvil";
+                return 'Completamente inmóvil';
             case 2:
-                return "Muy limitado";
+                return 'Muy limitado';
             case 3:
-                return "Levemente limitado";
+                return 'Levemente limitado';
             case 4:
-                return "Ninguna limitación";
+                return 'Ninguna limitación';
         }
 
-        return "";
+        return '';
     }
 
-    getNutricion(){
-        switch(this.valoracion.nutricion){
+    getNutricion() {
+        switch (this.valoracion.nutricion) {
             case 1:
-                return "Deficiente";
+                return 'Deficiente';
             case 2:
-                return "Inadecuada";
+                return 'Inadecuada';
             case 3:
-                return "Adecuada";
+                return 'Adecuada';
             case 4:
-                return "Excelente";
+                return 'Excelente';
         }
 
-        return "";
+        return '';
     }
 
-    getFriccion(){
-        switch(this.valoracion.friccion_cizallamiento){
+    getFriccion() {
+        switch (this.valoracion.friccion_cizallamiento) {
             case 1:
-                return "Problema requiere máximo cuidado";
+                return 'Problema requiere máximo cuidado';
             case 2:
-                return "Problema potencial requiere mínimo cuidado";
+                return 'Problema potencial requiere mínimo cuidado';
             case 3:
-                return "Sin Problema aparente";
+                return 'Sin Problema aparente';
         }
 
-        return "";
+        return '';
     }
 
-    getValoracionGeneral(value){
-        switch(value){
+    getValoracionGeneral(value) {
+        switch (value) {
             case 0:
-                return "Incapaz de hacerlo";
+                return 'Incapaz de hacerlo';
             case 1:
-                return "Intenta pero inseguro";
+                return 'Intenta pero inseguro';
             case 3:
-                return "Alguna Ayuda";
+                return 'Alguna Ayuda';
             case 4:
-                return "Mínima ayuda";
+                return 'Mínima ayuda';
             case 5:
-                return "Independiente";
+                return 'Independiente';
         }
 
-        return "";
+        return '';
     }
 
-    getValoracionGeneral2(value){
-        switch(value){
+    getValoracionGeneral2(value) {
+        switch (value) {
             case 0:
-                return "Incapaz de hacerlo";
+                return 'Incapaz de hacerlo';
             case 2:
-                return "Intenta pero inseguro";
+                return 'Intenta pero inseguro';
             case 5:
-                return "Alguna Ayuda";
+                return 'Alguna Ayuda';
             case 8:
-                return "Mínima ayuda";
+                return 'Mínima ayuda';
             case 10:
-                return "Independiente";
+                return 'Independiente';
         }
 
-        return "";
+        return '';
     }
 
-    getValoracionGeneral3(value){
-        switch(value){
+    getValoracionGeneral3(value) {
+        switch (value) {
             case 0:
-                return "Incapaz de hacerlo";
+                return 'Incapaz de hacerlo';
             case 2:
-                return "Intenta pero inseguro";
+                return 'Intenta pero inseguro';
             case 10:
-                return "Alguna Ayuda";
+                return 'Alguna Ayuda';
             case 14:
-                return "Mínima ayuda";
+                return 'Mínima ayuda';
             case 15:
-                return "Independiente";
+                return 'Independiente';
         }
 
-        return "";
+        return '';
     }
 }

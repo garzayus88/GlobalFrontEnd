@@ -1,16 +1,12 @@
 import { ValoracionEnfermeria } from './../../models/valoracion';
-import { MedicamentosComponent } from './../medicamentos/medicamentos.component';
 import { Paciente } from './../../models/pacientes';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { HistorialService } from './../../historial.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatSelectChange } from "@angular/material";
-import {FormBuilder, FormGroup, Validators , ValidatorFn, AbstractControl, FormControl, ReactiveFormsModule} from '@angular/forms';
-import { catchError, map, tap,startWith, switchMap, 
-         debounceTime, distinctUntilChanged, takeWhile, first } from 'rxjs/operators';
+import { map, startWith, switchMap, debounceTime} from 'rxjs/operators';
 import { EmitterService } from '../../services/emitter.service';
-
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-userselect',
@@ -18,13 +14,13 @@ import { EmitterService } from '../../services/emitter.service';
   styleUrls: ['./userselect.component.css']
 })
 export class UserselectComponent implements OnInit {
-  pacientes: Observable<Paciente[]>
-  visitas: Observable<ValoracionEnfermeria[]>
-  pacienteSelected:Paciente = {} as any;
+  pacientes: Observable<Paciente[]>;
+  visitas: Observable<ValoracionEnfermeria[]>;
+  pacienteSelected: Paciente = {} as any;
   idProfesional;
   idSelected;
 
-  myControl: FormControl = new FormControl(); 
+  myControl: FormControl = new FormControl();
   filteredPacientes: Observable<any>;
 
 
@@ -35,9 +31,8 @@ export class UserselectComponent implements OnInit {
 
   ngOnInit() {
 
-    this.route.queryParams.subscribe((params)=>{      
-      if(params['usuario'])
-      {
+    this.route.queryParams.subscribe((params) => {
+      if (params['usuario']) {
         this.dataService.setIdPro(params['usuario']);
       }
     });
@@ -47,53 +42,53 @@ export class UserselectComponent implements OnInit {
       this.filteredPacientes = this.myControl.valueChanges
         .pipe(
           startWith(null),
-          debounceTime(200),           
-          switchMap(val => {           
-            return this.filter(val || '')
-          })       
+          debounceTime(200),
+          switchMap(val => {
+            return this.filter(val || '');
+          })
         );
   }
 
   filter(val: string): Observable<any[]> {
     return this.pacientes
     .pipe(
-      map(response => response.filter(option => {       
-        return option.nom_Pac.toLowerCase().indexOf(val.toLowerCase()) > -1
+      map(response => response.filter(option => {
+        return option.nom_Pac.toLowerCase().indexOf(val.toLowerCase()) > -1;
       }))
-    )
+    );
   }
 
-  getPacientes(){
+  getPacientes() {
     this.pacientes = this.historialService.getPacientes();
   }
 
-  getVisitasPaciente(){
+  getVisitasPaciente() {
     this.visitas = this.historialService.getValoracionListPaciente(this.pacienteSelected.iden_Pac);
-    console.log(this.visitas.toArray.length)
+
   }
 
   displayFn(paciente: Paciente): string {
-    if(paciente != null)
-        return paciente.nom_Pac + ' ' + paciente.ape_Pac
-    
-        return ' '
+    if (paciente != null) {
+        return paciente.nom_Pac + ' ' + paciente.ape_Pac;
+    }
+        return ' ';
   }
 
-  getPacienteFromAuto(paciente: Paciente){
-    console.log(paciente)
+  getPacienteFromAuto(paciente: Paciente) {
+
       this.pacienteSelected = paciente;
       this.dataService.setPaciente(paciente);
       this.getVisitasPaciente();
   }
 
-  openDetails(visita: ValoracionEnfermeria){
+  openDetails(visita: ValoracionEnfermeria) {
     console.log(visita);
-    this.router.navigate(['/visita',visita.iden_pac,visita.Id_ValSegEnf]);
+    this.router.navigate(['/visita', visita.iden_pac, visita.Id_ValSegEnf]);
     this.dataService.setVisita(visita);
   }
 
-  openPdf(visita: ValoracionEnfermeria){
-    //window.open("http://enfermeriaapi.globallifeambulancias.com/pdf/" + visita.iden_pac + "/" + visita.Id_ValSegEnf, "_blank");
-    this.router.navigate(['/pdf',visita.iden_pac,visita.Id_ValSegEnf]);
+  openPdf(visita: ValoracionEnfermeria) {
+    // window.open("http://enfermeriaapi.globallifeambulancias.com/pdf/" + visita.iden_pac + "/" + visita.Id_ValSegEnf, "_blank");
+    this.router.navigate(['/pdf', visita.iden_pac, visita.Id_ValSegEnf]);
   }
 }

@@ -5,50 +5,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import {FormsModule, ReactiveFormsModule, FormControl, NgControl} from '@angular/forms';
-import { Http, Headers, RequestOptions } from '@angular/http'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import {FileUploadModule} from 'ng2-file-upload';
 
-import 'hammerjs'
+import 'hammerjs';
 
-import {  
+import {
   MatButtonModule,
-  MatButtonToggleModule,
   MatCardModule,
   MatCheckboxModule,
-  MatChipsModule,
   MatDatepickerModule,
   MatDialogModule,
   MatExpansionModule,
-  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule,
   MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
   MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
   MatSlideToggleModule,
   MatSnackBarModule,
-  MatSortModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule,
-  MatStepperModule,
-  MatAutocomplete,
-  MatFormFieldModule, 
-  
-  
+  MatFormFieldModule,
 
 } from '@angular/material';
 import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
@@ -60,7 +42,7 @@ import { PdfService } from './pdf.service';
 @NgModule({
   declarations: [
     AppComponent,
-    MedicamentosComponent,    
+    MedicamentosComponent,
     UserselectComponent,
     PdfComponent
   ],
@@ -85,8 +67,7 @@ import { PdfService } from './pdf.service';
     MatIconModule,
     MatDialogModule,
     MatSnackBarModule,
-    HttpModule,
-    FormsModule,    
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     MatExpansionModule,

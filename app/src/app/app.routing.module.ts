@@ -1,7 +1,6 @@
 import { MedicamentosComponent } from './components/medicamentos/medicamentos.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from "@angular/core";
-import { AppComponent } from './app.component';
+import { NgModule } from '@angular/core';
 import { UserselectComponent } from './components/userselect/userselect.component';
 import { PdfComponent } from './pdf/pdf.component';
 
@@ -16,19 +15,21 @@ const appRoutes: Routes = [
   { path: 'pdf',   component: PdfComponent},
   { path: 'pdf/:id_pac/:id_visita',   component: PdfComponent},
   { path: '**', redirectTo: '' }
-];  
+];
 
 @NgModule({
-  declarations: [    
+  declarations: [
   ],
   imports: [
     RouterModule.forRoot(
-      appRoutes      
-    ) 
+      appRoutes
+    )
   ],
   providers: [],
   bootstrap: [],
   exports: [RouterModule]
 })
 
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+ }
